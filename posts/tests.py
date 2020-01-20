@@ -12,7 +12,7 @@ class ParserTests(TestCase):
 
     def test_fetch_posts(self):
         response = requests.get(self.url)
-        response.encoding = "utf-8"
+        self.assertEqual(response.status_code, 200)
         bs = BeautifulSoup(response.text, "html.parser")
         data = [
             {
