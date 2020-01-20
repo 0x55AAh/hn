@@ -1,6 +1,0 @@
-To deploy the project run this commands:
-
-
-docker build .
-docker-compose build
-docker-compose up
