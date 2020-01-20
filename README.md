@@ -1,20 +1,19 @@
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+A step by step series of examples that tell you how to get a development env running.
 
+First of all clone the project to any directory:
 ```
 git clone git@github.com:0x55AAh/hn.git
 ```
+Now cd to home of the project:
 ```
 cd hn
 ```
+Next run docker builders:
 ```
 docker build .
-```
-```
 docker-compose build
-```
-```
 docker-compose up
 ```
 Now we can log in http://127.0.0.1/admin:
@@ -33,7 +32,3 @@ For manual testing run this:
 ```
 docker-compose run --rm app python manage.py test posts
 ```
-
-## Authors
-
-* **Lysenko Vladimir**
