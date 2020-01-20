@@ -26,7 +26,10 @@ def posts(request):
         return JsonResponse({
             "error": "Limit {} is not valid".format(request.GET["limit"])})
 
-    objects = Post.objects.order_by(order_by)
+    if order_by:
+        objects = Post.objects.order_by(order_by)
+    else:
+        objects = Post.objects.all()
     if offset and limit:
         objects = objects[offset:offset + limit]
     elif offset:
