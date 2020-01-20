@@ -17,9 +17,9 @@ docker-compose build
 ```
 docker-compose up
 ```
-Now we can log in http://127.0.0.1/admin
-login: admin
-password: admin
+Now we can log in http://127.0.0.1/admin:
+* login: admin
+* password: admin
 
 After that we can manually run startparser for fetching
 and saving HackerNews posts.
@@ -28,6 +28,11 @@ docker-compose run --rm app python manage.py startparser
 ```
 In case of need for periodical running the script, we can
 create cron task or even celery task.
+
+For manual testing run this:
+```
+docker-compose run --rm app python manage.py test posts
+```
 
 ## Authors
 
