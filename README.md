@@ -26,6 +26,8 @@ and saving HackerNews posts.
 ```
 docker-compose run --rm app python manage.py startparser
 ```
+In case of need for periodical running the script, we can
+create cron task or even celery task.
 
 ## Authors
 
