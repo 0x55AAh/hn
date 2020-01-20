@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from django.core.management.base import BaseCommand, CommandError
 from django.db import IntegrityError
 from posts.models import Post
