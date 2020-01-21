@@ -4,7 +4,7 @@ A step by step series of examples that tell you how to get a development env run
 
 First of all clone the project to any directory:
 ```
-git clone git@github.com:0x55AAh/hn.git
+git clone https://github.com/0x55AAh/hn.git
 ```
 Now cd to home of the project:
 ```
