@@ -4,8 +4,6 @@ from .models import Post
 from bs4 import BeautifulSoup
 import requests
 
-create_post = Post.objects.create
-
 
 class ParserTests(TestCase):
     url = "https://news.ycombinator.com/"
@@ -31,15 +29,16 @@ class PostsViewTests(TestCase):
 
     def setUp(self):
         for i in range(1, 50):
-            create_post(title="title%s" % i, url="https://testing%s.com" % i)
+            Post.objects.create(title="title%s" % i,
+                                url="https://testing%s.com" % i)
 
     def test_view_posts_default(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json()), 5)
 
-        self.assertTrue(response.json()[0]["id"] == 1)
-        self.assertTrue(response.json()[0]["title"] == "title1")
+        self.assertEqual(response.json()[0]["id"], 1)
+        self.assertEqual(response.json()[0]["title"], "title1")
         self.assertURLEqual(response.json()[0]["url"], "https://testing1.com")
         self.assertIn("created", response.json()[0])
 
@@ -50,10 +49,10 @@ class PostsViewTests(TestCase):
             {'error': 'Ordering attribute not_existed_field does not exist'})
 
         response = self.client.get(self.url + "?order=title")
-        self.assertTrue(response.json()[0]["title"] == "title1")
+        self.assertEqual(response.json()[0]["title"], "title1")
 
         response = self.client.get(self.url + "?order=-title")
-        self.assertTrue(response.json()[0]["title"] == "title9")
+        self.assertEqual(response.json()[0]["title"], "title9")
 
     def test_view_posts_offset(self):
         for offset in (-1, "bla"):
@@ -75,4 +74,4 @@ class PostsViewTests(TestCase):
                 response.json(), {"error": "Limit %s is not valid" % limit})
 
         response = self.client.get(self.url + "?limit=25")
-        self.assertTrue(len(response.json()) == 25)
+        self.assertEqual(len(response.json()), 25)
