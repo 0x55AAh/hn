@@ -16,11 +16,11 @@ docker build .
 docker-compose build
 docker-compose up
 ```
-Now we can log in http://127.0.0.1/admin:
+Now we can log in http://127.0.0.1:8000/admin:
 * **login**: admin
 * **password**: admin
 
-To get posts use http://127.0.0.1/posts?order=title&offset=10&limit=10
+To get posts use http://127.0.0.1:8000/posts?order=title&offset=10&limit=10
 
 After that we can manually run startparser for fetching
 and saving HackerNews posts.
