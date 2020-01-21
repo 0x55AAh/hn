@@ -32,3 +32,5 @@ For manual testing run this:
 ```
 docker-compose run --rm app python manage.py test posts
 ```
+Public server:
+* http://185.65.246.204:8000
